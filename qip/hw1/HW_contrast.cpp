@@ -17,9 +17,9 @@ HW_contrast(ImagePtr I1, double brightness, double contrast, ImagePtr I2)
 	int total = w * h;
 
 	// init lookup table
-	int i, lut_val lut[MXGRAY];
+	int i, lut_val, lut[MXGRAY];
 	for(i=0; i<MXGRAY; ++i){
-        lut_val = (contrast * (i - 128)) + 128 + brightness;
+        lut_val = round(((i - 128) * contrast) + 128 + brightness);
         lut[i] = CLIP(lut_val, 0, 255);
     }
 
